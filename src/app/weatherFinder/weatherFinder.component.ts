@@ -53,7 +53,7 @@ export class WeatherFinder implements OnInit {
 
     this.http.get(this.apiurl + this.town).subscribe((filteredResult: any) => {
       console.log(filteredResult);
-      if (filteredResult) this.exist = true; else this.exist = false;
+      if (filteredResult.data.length>0) this.exist = true; else this.exist = false;
       if (this.exist) {
         this.temperature = filteredResult.data[0].weather;
         this.isSunny = +(this.temperature.split(" ")[0])>=20;
